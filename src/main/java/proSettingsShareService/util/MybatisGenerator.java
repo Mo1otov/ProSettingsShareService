@@ -14,7 +14,7 @@ public class MybatisGenerator {
         }).packageConfig(builder -> {
             builder.parent("proSettingsShareService"); // 设置父包名
         }).strategyConfig(builder -> {
-            builder.addInclude("sys_admin"); // 设置需要生成的表名
+            builder.addInclude("pro_basic_info"); // 设置需要生成的表名
         }).execute();
     }
 }
