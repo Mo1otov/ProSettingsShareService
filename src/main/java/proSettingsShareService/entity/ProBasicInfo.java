@@ -3,8 +3,9 @@ package proSettingsShareService.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.util.Date;
 
 /**
  * <p>
@@ -38,7 +39,7 @@ public class ProBasicInfo implements Serializable {
     /**
      * 选手生日
      */
-    private LocalDate proBirthday;
+    private String proBirthday;
 
     /**
      * 选手简介
@@ -84,11 +85,11 @@ public class ProBasicInfo implements Serializable {
         this.proCountry = proCountry;
     }
 
-    public LocalDate getProBirthday() {
+    public String getProBirthday() {
         return proBirthday;
     }
 
-    public void setProBirthday(LocalDate proBirthday) {
+    public void setProBirthday(String proBirthday) {
         this.proBirthday = proBirthday;
     }
 
