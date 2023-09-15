@@ -44,20 +44,20 @@ public class ProBasicInfoController {
     @PostMapping("/updateProBasicInfo")
     public TableResult<ProBasicInfo> updateProBasicInfo(ProBasicInfo proBasicInfo) {
         proBasicInfoService.updateById(proBasicInfo);
-        return TableResult.ok("修改职业选手基本信息成功！");
+        return TableResult.ok("修改该选手基本信息成功！");
     }
 
     @Auth(roles = {"ADMIN"})
     @PostMapping("/addProBasicInfo")//映射的地址与方法名没有关系
     public TableResult<ProBasicInfo> addProBasicInfo(ProBasicInfo proBasicInfo) {
         proBasicInfoService.save(proBasicInfo);
-        return TableResult.ok("新增职业选手基本信息成功！");
+        return TableResult.ok("新增该选手基本信息成功！");
     }
 
     @Auth(roles = {"ADMIN"})
     @PostMapping("/deleteProBasicInfo")//映射的地址与方法名没有关系
     public TableResult<ProBasicInfo> deleteProBasicInfo(Integer[] ids) {//参数名要和前端的ajax方法中的data参数里面的属性名字一致
         proBasicInfoService.removeByIds(Arrays.asList(ids));//asList用于将数组转化为List
-        return TableResult.ok("删除职业选手基本信息成功！");
+        return TableResult.ok("删除该选手基本信息成功！");
     }
 }
