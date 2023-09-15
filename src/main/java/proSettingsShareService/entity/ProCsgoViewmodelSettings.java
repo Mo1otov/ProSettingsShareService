@@ -1,5 +1,7 @@
 package proSettingsShareService.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 
@@ -9,7 +11,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author mxw
- * @since 2023-09-13
+ * @since 2023-09-15
  */
 @TableName("pro_csgo_viewmodel_settings")
 public class ProCsgoViewmodelSettings implements Serializable {
@@ -19,27 +21,34 @@ public class ProCsgoViewmodelSettings implements Serializable {
     /**
      * 选手id
      */
+    @TableId(value = "pro_id", type = IdType.AUTO)
+
     private Integer proId;
+
+    /**
+     * 选手游戏id
+     */
+    private String proGameId;
 
     /**
      * 选手视图模型的fov
      */
-    private Integer vlFov;
+    private Double vlFov;
 
     /**
      * 选手视图模型的x轴偏移
      */
-    private Integer vlOffsetX;
+    private Double vlOffsetX;
 
     /**
      * 选手视图模型的y轴偏移
      */
-    private Integer vlOffsetY;
+    private Double vlOffsetY;
 
     /**
      * 选手视图模型的z轴偏移
      */
-    private Integer vlOffsetZ;
+    private Double vlOffsetZ;
 
     /**
      * 选手视图模型的持枪视角
@@ -49,12 +58,12 @@ public class ProCsgoViewmodelSettings implements Serializable {
     /**
      * 选手视图模型的左移amt
      */
-    private Integer vlShiftLeftAmt;
+    private Double vlShiftLeftAmt;
 
     /**
      * 选手视图模型的右移amt
      */
-    private Integer vlShiftRightAmt;
+    private Double vlShiftRightAmt;
 
     /**
      * 选手视图模型是否开启后座力晃动(1表示开启,0表示关闭)
@@ -74,35 +83,43 @@ public class ProCsgoViewmodelSettings implements Serializable {
         this.proId = proId;
     }
 
-    public Integer getVlFov() {
+    public String getProGameId() {
+        return proGameId;
+    }
+
+    public void setProGameId(String proGameId) {
+        this.proGameId = proGameId;
+    }
+
+    public Double getVlFov() {
         return vlFov;
     }
 
-    public void setVlFov(Integer vlFov) {
+    public void setVlFov(Double vlFov) {
         this.vlFov = vlFov;
     }
 
-    public Integer getVlOffsetX() {
+    public Double getVlOffsetX() {
         return vlOffsetX;
     }
 
-    public void setVlOffsetX(Integer vlOffsetX) {
+    public void setVlOffsetX(Double vlOffsetX) {
         this.vlOffsetX = vlOffsetX;
     }
 
-    public Integer getVlOffsetY() {
+    public Double getVlOffsetY() {
         return vlOffsetY;
     }
 
-    public void setVlOffsetY(Integer vlOffsetY) {
+    public void setVlOffsetY(Double vlOffsetY) {
         this.vlOffsetY = vlOffsetY;
     }
 
-    public Integer getVlOffsetZ() {
+    public Double getVlOffsetZ() {
         return vlOffsetZ;
     }
 
-    public void setVlOffsetZ(Integer vlOffsetZ) {
+    public void setVlOffsetZ(Double vlOffsetZ) {
         this.vlOffsetZ = vlOffsetZ;
     }
 
@@ -114,19 +131,19 @@ public class ProCsgoViewmodelSettings implements Serializable {
         this.vlPresetpos = vlPresetpos;
     }
 
-    public Integer getVlShiftLeftAmt() {
+    public Double getVlShiftLeftAmt() {
         return vlShiftLeftAmt;
     }
 
-    public void setVlShiftLeftAmt(Integer vlShiftLeftAmt) {
+    public void setVlShiftLeftAmt(Double vlShiftLeftAmt) {
         this.vlShiftLeftAmt = vlShiftLeftAmt;
     }
 
-    public Integer getVlShiftRightAmt() {
+    public Double getVlShiftRightAmt() {
         return vlShiftRightAmt;
     }
 
-    public void setVlShiftRightAmt(Integer vlShiftRightAmt) {
+    public void setVlShiftRightAmt(Double vlShiftRightAmt) {
         this.vlShiftRightAmt = vlShiftRightAmt;
     }
 
@@ -150,6 +167,7 @@ public class ProCsgoViewmodelSettings implements Serializable {
     public String toString() {
         return "ProCsgoViewmodelSettings{" +
         "proId = " + proId +
+        ", proGameId = " + proGameId +
         ", vlFov = " + vlFov +
         ", vlOffsetX = " + vlOffsetX +
         ", vlOffsetY = " + vlOffsetY +

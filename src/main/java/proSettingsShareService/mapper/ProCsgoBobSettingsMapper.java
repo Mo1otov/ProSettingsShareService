@@ -1,7 +1,7 @@
 package proSettingsShareService.mapper;
 
-import proSettingsShareService.entity.ProCsgoBobSettings;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import proSettingsShareService.entity.ProCsgoBobSettings;
 
 /**
  * <p>

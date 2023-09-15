@@ -1,5 +1,7 @@
 package proSettingsShareService.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 
@@ -9,7 +11,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author mxw
- * @since 2023-09-13
+ * @since 2023-09-15
  */
 @TableName("pro_csgo_crosshair_settings")
 public class ProCsgoCrosshairSettings implements Serializable {
@@ -19,7 +21,14 @@ public class ProCsgoCrosshairSettings implements Serializable {
     /**
      * 选手id
      */
+    @TableId(value = "pro_id", type = IdType.AUTO)
+
     private Integer proId;
+
+    /**
+     * 选手游戏id
+     */
+    private String proGameId;
 
     /**
      * 是否启用准星轮廓(1表示true，0表示false)
@@ -59,12 +68,12 @@ public class ProCsgoCrosshairSettings implements Serializable {
     /**
      * 准星间隙
      */
-    private Integer crGap;
+    private Double crGap;
 
     /**
      * 准星大小
      */
-    private Integer crSize;
+    private Double crSize;
 
     /**
      * 准星风格
@@ -79,7 +88,7 @@ public class ProCsgoCrosshairSettings implements Serializable {
     /**
      * 开镜准星宽度
      */
-    private Integer crSniperWidth;
+    private Double crSniperWidth;
 
     public Integer getProId() {
         return proId;
@@ -87,6 +96,14 @@ public class ProCsgoCrosshairSettings implements Serializable {
 
     public void setProId(Integer proId) {
         this.proId = proId;
+    }
+
+    public String getProGameId() {
+        return proGameId;
+    }
+
+    public void setProGameId(String proGameId) {
+        this.proGameId = proGameId;
     }
 
     public Byte getCrDrawoutline() {
@@ -145,19 +162,19 @@ public class ProCsgoCrosshairSettings implements Serializable {
         this.crDot = crDot;
     }
 
-    public Integer getCrGap() {
+    public Double getCrGap() {
         return crGap;
     }
 
-    public void setCrGap(Integer crGap) {
+    public void setCrGap(Double crGap) {
         this.crGap = crGap;
     }
 
-    public Integer getCrSize() {
+    public Double getCrSize() {
         return crSize;
     }
 
-    public void setCrSize(Integer crSize) {
+    public void setCrSize(Double crSize) {
         this.crSize = crSize;
     }
 
@@ -177,11 +194,11 @@ public class ProCsgoCrosshairSettings implements Serializable {
         this.crThickness = crThickness;
     }
 
-    public Integer getCrSniperWidth() {
+    public Double getCrSniperWidth() {
         return crSniperWidth;
     }
 
-    public void setCrSniperWidth(Integer crSniperWidth) {
+    public void setCrSniperWidth(Double crSniperWidth) {
         this.crSniperWidth = crSniperWidth;
     }
 
@@ -189,6 +206,7 @@ public class ProCsgoCrosshairSettings implements Serializable {
     public String toString() {
         return "ProCsgoCrosshairSettings{" +
         "proId = " + proId +
+        ", proGameId = " + proGameId +
         ", crDrawoutline = " + crDrawoutline +
         ", crAlpha = " + crAlpha +
         ", crColor = " + crColor +

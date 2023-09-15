@@ -1,5 +1,7 @@
 package proSettingsShareService.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 
@@ -9,7 +11,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author mxw
- * @since 2023-09-13
+ * @since 2023-09-15
  */
 @TableName("pro_csgo_advanced_video_settings")
 public class ProCsgoAdvancedVideoSettings implements Serializable {
@@ -19,7 +21,13 @@ public class ProCsgoAdvancedVideoSettings implements Serializable {
     /**
      * 选手id
      */
+    @TableId(value = "pro_id", type = IdType.AUTO)
     private Integer proId;
+
+    /**
+     * 选手游戏id
+     */
+    private String proGameId;
 
     /**
      * 游戏全局阴影质量
@@ -92,6 +100,14 @@ public class ProCsgoAdvancedVideoSettings implements Serializable {
 
     public void setProId(Integer proId) {
         this.proId = proId;
+    }
+
+    public String getProGameId() {
+        return proGameId;
+    }
+
+    public void setProGameId(String proGameId) {
+        this.proGameId = proGameId;
     }
 
     public String getAvGlobalShadowQuality() {
@@ -202,6 +218,7 @@ public class ProCsgoAdvancedVideoSettings implements Serializable {
     public String toString() {
         return "ProCsgoAdvancedVideoSettings{" +
         "proId = " + proId +
+        ", proGameId = " + proGameId +
         ", avGlobalShadowQuality = " + avGlobalShadowQuality +
         ", avTextureDetail = " + avTextureDetail +
         ", avEffectDetail = " + avEffectDetail +

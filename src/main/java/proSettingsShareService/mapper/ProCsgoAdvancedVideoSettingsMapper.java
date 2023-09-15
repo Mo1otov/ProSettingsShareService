@@ -1,7 +1,7 @@
 package proSettingsShareService.mapper;
 
-import proSettingsShareService.entity.ProCsgoAdvancedVideoSettings;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import proSettingsShareService.entity.ProCsgoAdvancedVideoSettings;
 
 /**
  * <p>

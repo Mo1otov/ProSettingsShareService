@@ -1,7 +1,7 @@
 package proSettingsShareService.service;
 
-import proSettingsShareService.entity.ProCsgoEquipmentGear;
 import com.baomidou.mybatisplus.extension.service.IService;
+import proSettingsShareService.entity.ProCsgoEquipmentGear;
 
 /**
  * <p>

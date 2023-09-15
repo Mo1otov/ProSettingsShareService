@@ -1,7 +1,7 @@
 package proSettingsShareService.mapper;
 
-import proSettingsShareService.entity.ProCsgoEquipmentGear;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import proSettingsShareService.entity.ProCsgoEquipmentGear;
 
 /**
  * <p>

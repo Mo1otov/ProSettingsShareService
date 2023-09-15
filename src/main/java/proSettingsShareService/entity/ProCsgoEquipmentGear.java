@@ -1,5 +1,7 @@
 package proSettingsShareService.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 
@@ -9,7 +11,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author mxw
- * @since 2023-09-13
+ * @since 2023-09-15
  */
 @TableName("pro_csgo_equipment_gear")
 public class ProCsgoEquipmentGear implements Serializable {
@@ -19,7 +21,14 @@ public class ProCsgoEquipmentGear implements Serializable {
     /**
      * 选手id
      */
+    @TableId(value = "pro_id", type = IdType.AUTO)
+
     private Integer proId;
+
+    /**
+     * 选手游戏id
+     */
+    private String proGameId;
 
     /**
      * 显示器型号
@@ -57,6 +66,14 @@ public class ProCsgoEquipmentGear implements Serializable {
 
     public void setProId(Integer proId) {
         this.proId = proId;
+    }
+
+    public String getProGameId() {
+        return proGameId;
+    }
+
+    public void setProGameId(String proGameId) {
+        this.proGameId = proGameId;
     }
 
     public String getGearMonitor() {
@@ -111,6 +128,7 @@ public class ProCsgoEquipmentGear implements Serializable {
     public String toString() {
         return "ProCsgoEquipmentGear{" +
         "proId = " + proId +
+        ", proGameId = " + proGameId +
         ", gearMonitor = " + gearMonitor +
         ", gearMouse = " + gearMouse +
         ", gearKeyboard = " + gearKeyboard +

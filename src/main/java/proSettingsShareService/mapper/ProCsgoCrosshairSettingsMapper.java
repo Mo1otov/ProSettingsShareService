@@ -1,7 +1,7 @@
 package proSettingsShareService.mapper;
 
-import proSettingsShareService.entity.ProCsgoCrosshairSettings;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import proSettingsShareService.entity.ProCsgoCrosshairSettings;
 
 /**
  * <p>

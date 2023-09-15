@@ -3,10 +3,7 @@ package proSettingsShareService.controller;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.stereotype.Controller;
-import proSettingsShareService.entity.ProCsgoLaunchOptions;
 import proSettingsShareService.entity.ProCsgoPcSpecs;
-import proSettingsShareService.service.IProCsgoLaunchOptionsService;
 import proSettingsShareService.service.IProCsgoPcSpecsService;
 import proSettingsShareService.util.Auth;
 import proSettingsShareService.util.TableResult;
@@ -59,7 +56,7 @@ public class ProCsgoPcSpecsController {
 
     @Auth(roles = {"ADMIN"})
     @PostMapping("/deleteProCsgoPcSpecs")//映射的地址与方法名没有关系
-    public TableResult<ProCsgoLaunchOptions> deleteProCsgoPcSpecs(Integer[] ids) {//参数名要和前端的ajax方法中的data参数里面的属性名字一致
+    public TableResult<ProCsgoPcSpecs> deleteProCsgoPcSpecs(Integer[] ids) {//参数名要和前端的ajax方法中的data参数里面的属性名字一致
         proCsgoPcSpecsService.removeByIds(Arrays.asList(ids));//asList用于将数组转化为List
         return TableResult.ok("删除该选手主机配置信息成功！");
     }

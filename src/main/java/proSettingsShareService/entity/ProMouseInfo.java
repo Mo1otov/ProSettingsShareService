@@ -1,5 +1,7 @@
 package proSettingsShareService.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 
@@ -9,7 +11,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author mxw
- * @since 2023-09-13
+ * @since 2023-09-15
  */
 @TableName("pro_mouse_info")
 public class ProMouseInfo implements Serializable {
@@ -19,7 +21,14 @@ public class ProMouseInfo implements Serializable {
     /**
      * 选手id
      */
+    @TableId(value = "pro_id", type = IdType.AUTO)
+
     private Integer proId;
+
+    /**
+     * 选手游戏id
+     */
+    private String proGameId;
 
     /**
      * 鼠标型号
@@ -34,7 +43,7 @@ public class ProMouseInfo implements Serializable {
     /**
      * 鼠标敏感度
      */
-    private Integer msSensitivity;
+    private Double msSensitivity;
 
     /**
      * 鼠标edpi
@@ -74,6 +83,14 @@ public class ProMouseInfo implements Serializable {
         this.proId = proId;
     }
 
+    public String getProGameId() {
+        return proGameId;
+    }
+
+    public void setProGameId(String proGameId) {
+        this.proGameId = proGameId;
+    }
+
     public String getMsMouseModel() {
         return msMouseModel;
     }
@@ -90,11 +107,11 @@ public class ProMouseInfo implements Serializable {
         this.msDpi = msDpi;
     }
 
-    public Integer getMsSensitivity() {
+    public Double getMsSensitivity() {
         return msSensitivity;
     }
 
-    public void setMsSensitivity(Integer msSensitivity) {
+    public void setMsSensitivity(Double msSensitivity) {
         this.msSensitivity = msSensitivity;
     }
 
@@ -150,6 +167,7 @@ public class ProMouseInfo implements Serializable {
     public String toString() {
         return "ProMouseInfo{" +
         "proId = " + proId +
+        ", proGameId = " + proGameId +
         ", msMouseModel = " + msMouseModel +
         ", msDpi = " + msDpi +
         ", msSensitivity = " + msSensitivity +
