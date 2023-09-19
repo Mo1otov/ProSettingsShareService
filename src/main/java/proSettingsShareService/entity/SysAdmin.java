@@ -1,11 +1,14 @@
 package proSettingsShareService.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author mxw
@@ -17,14 +20,14 @@ public class SysAdmin implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
+     * 账号id
+     */
+    @TableId(value = "account_id", type = IdType.AUTO)
+    private Integer accountId;
+    /**
      * 账号名
      */
     private String accountName;
-
-    /**
-     * 账号id
-     */
-    private Integer accountId;
 
     /**
      * 账号密码
@@ -71,10 +74,10 @@ public class SysAdmin implements Serializable {
     @Override
     public String toString() {
         return "SysAdmin{" +
-        "accountName = " + accountName +
-        ", accountId = " + accountId +
-        ", accountPassword = " + accountPassword +
-        ", accountRole = " + accountRole +
-        "}";
+                "accountName = " + accountName +
+                ", accountId = " + accountId +
+                ", accountPassword = " + accountPassword +
+                ", accountRole = " + accountRole +
+                "}";
     }
 }
