@@ -41,7 +41,7 @@ public class ProCsgoBobSettings implements Serializable {
     private Double bobAmtLat;
 
     /**
-     * 移动时手臂模型上下晃动幅度
+     * 移动时手臂模型前后晃动幅度
      */
     private Double bobAmtVert;
 

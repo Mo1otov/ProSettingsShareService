@@ -1,7 +1,10 @@
 package proSettingsShareService.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import proSettingsShareService.entity.ProBasicInfo;
 import proSettingsShareService.entity.ProCsgoAdvancedVideoSettings;
+
+import java.util.List;
 
 /**
  * <p>
@@ -12,5 +15,5 @@ import proSettingsShareService.entity.ProCsgoAdvancedVideoSettings;
  * @since 2023-09-13
  */
 public interface IProCsgoAdvancedVideoSettingsService extends IService<ProCsgoAdvancedVideoSettings> {
-
+    List<ProBasicInfo> getIds();
 }

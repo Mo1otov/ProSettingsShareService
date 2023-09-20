@@ -3,6 +3,7 @@ package proSettingsShareService.controller;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import proSettingsShareService.entity.ProBasicInfo;
 import proSettingsShareService.entity.ProCsgoPcSpecs;
 import proSettingsShareService.service.IProCsgoPcSpecsService;
 import proSettingsShareService.util.Auth;
@@ -59,5 +60,12 @@ public class ProCsgoPcSpecsController {
     public TableResult<ProCsgoPcSpecs> deleteProCsgoPcSpecs(Integer[] ids) {//参数名要和前端的ajax方法中的data参数里面的属性名字一致
         proCsgoPcSpecsService.removeByIds(Arrays.asList(ids));//asList用于将数组转化为List
         return TableResult.ok("删除该选手主机配置信息成功！");
+    }
+    @Auth(roles = {"ADMIN"})
+    @GetMapping("/getIds")//映射的地址与方法名没有关系
+    public TableResult<ProBasicInfo> getIds() {//参数名要和前端的ajax方法中的data参数里面的属性名字一致
+        List<ProBasicInfo> proBasicInfoList = proCsgoPcSpecsService.getIds();
+        // getTotal()方法返回表里的总记录数,getRecords()方法返回当前页的数据列表
+        return TableResult.ok("查询成功",proBasicInfoList.size(),proBasicInfoList);
     }
 }

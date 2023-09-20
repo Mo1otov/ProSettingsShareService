@@ -3,11 +3,12 @@ package proSettingsShareService.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author mxw
@@ -40,12 +41,17 @@ public class ProCsgoAdvancedVideoSettings implements Serializable {
     private String avTextureDetail;
 
     /**
+     * 游戏纹理流送
+     */
+    private String avTextureStreaming;
+
+    /**
      * 游戏效果细节
      */
     private String avEffectDetail;
 
     /**
-     * 游戏着色器细节
+     * 游戏光影细节
      */
     private String avShaderDetail;
 
@@ -65,12 +71,12 @@ public class ProCsgoAdvancedVideoSettings implements Serializable {
     private String avMultisamplingAntiAliasingMode;
 
     /**
-     * 游戏FXAA抗锯齿
+     * 游戏快速近似抗锯齿
      */
     private String avFxaaAntiAliasing;
 
     /**
-     * 游戏纹理过滤模式
+     * 游戏贴图过滤模式
      */
     private String avTextureFilteringMode;
 
@@ -85,12 +91,12 @@ public class ProCsgoAdvancedVideoSettings implements Serializable {
     private String avMotionBlur;
 
     /**
-     * 三重监视器模式
+     * 启用三倍显示器模式
      */
     private String avTripleMonitorMode;
 
     /**
-     * 使用着色器
+     * 使用Uber着色器
      */
     private String avUseUberShaders;
 
@@ -124,6 +130,14 @@ public class ProCsgoAdvancedVideoSettings implements Serializable {
 
     public void setAvTextureDetail(String avTextureDetail) {
         this.avTextureDetail = avTextureDetail;
+    }
+
+    public String getAvTextureStreaming() {
+        return avTextureStreaming;
+    }
+
+    public void setAvTextureStreaming(String avTextureStreaming) {
+        this.avTextureStreaming = avTextureStreaming;
     }
 
     public String getAvEffectDetail() {
@@ -217,21 +231,22 @@ public class ProCsgoAdvancedVideoSettings implements Serializable {
     @Override
     public String toString() {
         return "ProCsgoAdvancedVideoSettings{" +
-        "proId = " + proId +
-        ", proGameId = " + proGameId +
-        ", avGlobalShadowQuality = " + avGlobalShadowQuality +
-        ", avTextureDetail = " + avTextureDetail +
-        ", avEffectDetail = " + avEffectDetail +
-        ", avShaderDetail = " + avShaderDetail +
-        ", avBoostPlayerContrast = " + avBoostPlayerContrast +
-        ", avMulticoreRendering = " + avMulticoreRendering +
-        ", avMultisamplingAntiAliasingMode = " + avMultisamplingAntiAliasingMode +
-        ", avFxaaAntiAliasing = " + avFxaaAntiAliasing +
-        ", avTextureFilteringMode = " + avTextureFilteringMode +
-        ", avWaitForVerticalSync = " + avWaitForVerticalSync +
-        ", avMotionBlur = " + avMotionBlur +
-        ", avTripleMonitorMode = " + avTripleMonitorMode +
-        ", avUseUberShaders = " + avUseUberShaders +
-        "}";
+                "proId = " + proId +
+                ", proGameId = " + proGameId +
+                ", avGlobalShadowQuality = " + avGlobalShadowQuality +
+                ", avTextureDetail = " + avTextureDetail +
+                ", avTexTureStreaming = " + avTextureStreaming +
+                ", avEffectDetail = " + avEffectDetail +
+                ", avShaderDetail = " + avShaderDetail +
+                ", avBoostPlayerContrast = " + avBoostPlayerContrast +
+                ", avMulticoreRendering = " + avMulticoreRendering +
+                ", avMultisamplingAntiAliasingMode = " + avMultisamplingAntiAliasingMode +
+                ", avFxaaAntiAliasing = " + avFxaaAntiAliasing +
+                ", avTextureFilteringMode = " + avTextureFilteringMode +
+                ", avWaitForVerticalSync = " + avWaitForVerticalSync +
+                ", avMotionBlur = " + avMotionBlur +
+                ", avTripleMonitorMode = " + avTripleMonitorMode +
+                ", avUseUberShaders = " + avUseUberShaders +
+                "}";
     }
 }
