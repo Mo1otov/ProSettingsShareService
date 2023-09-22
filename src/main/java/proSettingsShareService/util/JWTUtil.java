@@ -15,7 +15,7 @@ import java.util.Map;
 @Component
 public class JWTUtil {
     //JWT秘钥
-    private String AUTHORIZE_TOKEN_SECRET = "cqut";
+    private String AUTHORIZE_TOKEN_SECRET = "proSettings";
     //JWT过期时间，单位毫秒。 7*24*60*60*1000=604800000
     private long AUTHORIZE_TOKEN_EXPIRE = 604800000;
 
@@ -35,14 +35,14 @@ public class JWTUtil {
         Date now = new Date(nowMillis);
         //需要保存到token字符串的有用信息
         Map<String, Object> map = new HashMap<>();
-        map.put("suRole", sysAdmin.getAccountRole());
-        map.put("suId", "" + sysAdmin.getAccountId());
-        map.put("suName", sysAdmin.getAccountName());
+        map.put("accountRole", sysAdmin.getAccountRole());
+        map.put("accountId", "" + sysAdmin.getAccountId());
+        map.put("accountName", sysAdmin.getAccountName());
         JwtBuilder builder = Jwts.builder()
                 .setClaims(map)  //设置附加信息
                 // .setId("1")
 //                .setSubject("权限验证")   // 主题
-                .setIssuer("cn.edu.cqut")     // 签发者
+                .setIssuer("proSettings")     // 签发者
                 .setIssuedAt(now)      // 签发时间
                 .signWith(signatureAlgorithm, AUTHORIZE_TOKEN_SECRET)  // 签名算法以及密匙
                 .setExpiration(expDate); // 过期时间

@@ -27,7 +27,7 @@ import java.util.List;
 public class ProCsgoLaunchOptionsController {
     @Autowired//自动从Spring容器中获取对象给变量赋值
     private IProCsgoLaunchOptionsService proCsgoLaunchOptionsService;
-    @Auth(roles = {"ADMIN"})
+    @Auth(roles = {"ADMIN","EXECUTIVE"})
     @GetMapping("/getProCsgoLaunchOptionsList")
     public TableResult<ProCsgoLaunchOptions> getProCsgoLaunchOptionsList(Integer limit, Integer page, HttpServletRequest request){
         if(limit ==null && page == null){
@@ -41,27 +41,27 @@ public class ProCsgoLaunchOptionsController {
             return TableResult.ok("查询成功", page1.getTotal(), page1.getRecords());
         }
     }
-    @Auth(roles = {"ADMIN"})
+    @Auth(roles = {"ADMIN","EXECUTIVE"})
     @PostMapping("/updateProCsgoLaunchOptions")
     public TableResult<ProCsgoLaunchOptions> updateProCsgoLaunchOptions(ProCsgoLaunchOptions proCsgoLaunchOptions) {
         proCsgoLaunchOptionsService.updateById(proCsgoLaunchOptions);
         return TableResult.ok("修改该选手游戏启动参数信息成功！");
     }
 
-    @Auth(roles = {"ADMIN"})
+    @Auth(roles = {"ADMIN","EXECUTIVE"})
     @PostMapping("/addProCsgoLaunchOptions")//映射的地址与方法名没有关系
     public TableResult<ProCsgoLaunchOptions> addProCsgoLaunchOptions(ProCsgoLaunchOptions proCsgoLaunchOptions) {
         proCsgoLaunchOptionsService.save(proCsgoLaunchOptions);
         return TableResult.ok("新增该选手游戏启动参数信息成功！");
     }
 
-    @Auth(roles = {"ADMIN"})
+    @Auth(roles = {"ADMIN","EXECUTIVE"})
     @PostMapping("/deleteProCsgoLaunchOptions")//映射的地址与方法名没有关系
     public TableResult<ProCsgoLaunchOptions> deleteProCsgoLaunchOptions(Integer[] ids) {//参数名要和前端的ajax方法中的data参数里面的属性名字一致
         proCsgoLaunchOptionsService.removeByIds(Arrays.asList(ids));//asList用于将数组转化为List
         return TableResult.ok("删除该选手游戏启动参数信息成功！");
     }
-    @Auth(roles = {"ADMIN"})
+    @Auth(roles = {"ADMIN","EXECUTIVE"})
     @GetMapping("/getIds")//映射的地址与方法名没有关系
     public TableResult<ProBasicInfo> getIds() {//参数名要和前端的ajax方法中的data参数里面的属性名字一致
         List<ProBasicInfo> proBasicInfoList = proCsgoLaunchOptionsService.getIds();

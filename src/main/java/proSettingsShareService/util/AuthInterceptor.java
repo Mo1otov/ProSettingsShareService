@@ -55,21 +55,18 @@ public class AuthInterceptor implements HandlerInterceptor {
                     return false;
                 }
 
-                String suId = (String) result.getObj().get("suId");
-                String suRole = (String) result.getObj().get("suRole");
-                String suName = (String) result.getObj().get("suName");
+                String accountId = (String) result.getObj().get("accountId");
+                String accountRole = (String) result.getObj().get("accountRole");
+                String accountName = (String) result.getObj().get("accountName");
 
                 boolean isValid = false;
                 for (String s : auth.roles()
                 ) {
-                    if (s.equals(suRole)) {
+                    if (s.equals(accountRole)) {
                         isValid = true;
                         break;
                     }
                 }
-
-                //没有权限
-//                if (!auth.roles().contains(suRole)) {
                 if (!isValid) {
                     httpServletResponse.setCharacterEncoding("UTF-8");
                     httpServletResponse.setContentType("application/json; charset=utf-8");
@@ -79,9 +76,9 @@ public class AuthInterceptor implements HandlerInterceptor {
                 }
 
                 //把用户实体保存到request, 让控制层方法可以获取登录用户信息
-                httpServletRequest.setAttribute("suRole", suName);
-                httpServletRequest.setAttribute("suName", suRole);
-                httpServletRequest.setAttribute("suId", suId);
+                httpServletRequest.setAttribute("accountRole", accountName);
+                httpServletRequest.setAttribute("accountName", accountRole);
+                httpServletRequest.setAttribute("accountId", accountId);
             }
         }
         return true;

@@ -27,7 +27,7 @@ import java.util.List;
 public class ProCsgoAdvancedVideoSettingsController {
     @Autowired//自动从Spring容器中获取对象给变量赋值
     private IProCsgoAdvancedVideoSettingsService proCsgoAdvancedVideoSettingsService;
-    @Auth(roles = {"ADMIN"})
+    @Auth(roles = {"ADMIN","EXECUTIVE"})
     @GetMapping("/getProCsgoAdvancedVideoSettingsList")
     public TableResult<ProCsgoAdvancedVideoSettings> getProCsgoAdvancedVideoSettingsList(Integer limit, Integer page, HttpServletRequest request){
         if(limit ==null && page == null){
@@ -41,27 +41,27 @@ public class ProCsgoAdvancedVideoSettingsController {
             return TableResult.ok("查询成功", page1.getTotal(), page1.getRecords());
         }
     }
-    @Auth(roles = {"ADMIN"})
+    @Auth(roles = {"ADMIN","EXECUTIVE"})
     @PostMapping("/updateProCsgoAdvancedVideoSettings")
     public TableResult<ProCsgoAdvancedVideoSettings> updateProCsgoAdvancedVideoSettings(ProCsgoAdvancedVideoSettings proCsgoAdvancedVideoSettings) {
         proCsgoAdvancedVideoSettingsService.updateById(proCsgoAdvancedVideoSettings);
         return TableResult.ok("修改该选手高级视频设置信息成功！");
     }
 
-    @Auth(roles = {"ADMIN"})
+    @Auth(roles = {"ADMIN","EXECUTIVE"})
     @PostMapping("/addProCsgoAdvancedVideoSettings")//映射的地址与方法名没有关系
     public TableResult<ProCsgoAdvancedVideoSettings> addProCsgoAdvancedVideoSettings(ProCsgoAdvancedVideoSettings proCsgoAdvancedVideoSettings) {
         proCsgoAdvancedVideoSettingsService.save(proCsgoAdvancedVideoSettings);
         return TableResult.ok("新增该选手高级视频设置信息成功！");
     }
 
-    @Auth(roles = {"ADMIN"})
+    @Auth(roles = {"ADMIN","EXECUTIVE"})
     @PostMapping("/deleteProCsgoAdvancedVideoSettings")//映射的地址与方法名没有关系
     public TableResult<ProCsgoAdvancedVideoSettings> deleteProCsgoAdvancedVideoSettings(Integer[] ids) {//参数名要和前端的ajax方法中的data参数里面的属性名字一致
         proCsgoAdvancedVideoSettingsService.removeByIds(Arrays.asList(ids));//asList用于将数组转化为List
         return TableResult.ok("删除该选手高级视频设置信息成功！");
     }
-    @Auth(roles = {"ADMIN"})
+    @Auth(roles = {"ADMIN","EXECUTIVE"})
     @GetMapping("/getIds")//映射的地址与方法名没有关系
     public TableResult<ProBasicInfo> getIds() {//参数名要和前端的ajax方法中的data参数里面的属性名字一致
             List<ProBasicInfo> proBasicInfoList = proCsgoAdvancedVideoSettingsService.getIds();

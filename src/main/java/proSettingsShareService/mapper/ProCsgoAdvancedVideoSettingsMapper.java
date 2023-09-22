@@ -5,7 +5,6 @@ import org.apache.ibatis.annotations.Select;
 import proSettingsShareService.entity.ProBasicInfo;
 import proSettingsShareService.entity.ProCsgoAdvancedVideoSettings;
 
-import javax.annotation.sql.DataSourceDefinition;
 import java.util.List;
 
 /**

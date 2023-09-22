@@ -27,7 +27,7 @@ import java.util.List;
 public class ProMouseInfoController {
     @Autowired//自动从Spring容器中获取对象给变量赋值
     private IProMouseInfoService proMouseInfoService;
-    @Auth(roles = {"ADMIN"})
+    @Auth(roles = {"ADMIN","EXECUTIVE"})
     @GetMapping("/getProMouseInfoList")
     public TableResult<ProMouseInfo> getProMouseInfoList(Integer limit, Integer page, HttpServletRequest request){
         if(limit ==null && page == null){
@@ -41,27 +41,27 @@ public class ProMouseInfoController {
             return TableResult.ok("查询成功", page1.getTotal(), page1.getRecords());
         }
     }
-    @Auth(roles = {"ADMIN"})
+    @Auth(roles = {"ADMIN","EXECUTIVE"})
     @PostMapping("/updateProMouseInfo")
     public TableResult<ProMouseInfo> updateProMouseInfo(ProMouseInfo proMouseInfo) {
         proMouseInfoService.updateById(proMouseInfo);
         return TableResult.ok("修改该选手鼠标信息成功！");
     }
 
-    @Auth(roles = {"ADMIN"})
+    @Auth(roles = {"ADMIN","EXECUTIVE"})
     @PostMapping("/addProMouseInfo")//映射的地址与方法名没有关系
     public TableResult<ProMouseInfo> addProMouseInfo(ProMouseInfo proMouseInfo ) {
         proMouseInfoService.save(proMouseInfo);
         return TableResult.ok("新增该选手鼠标信息成功！");
     }
 
-    @Auth(roles = {"ADMIN"})
+    @Auth(roles = {"ADMIN","EXECUTIVE"})
     @PostMapping("/deleteProMouseInfo")//映射的地址与方法名没有关系
     public TableResult<ProMouseInfo> deleteProMouseInfo(Integer[] ids) {//参数名要和前端的ajax方法中的data参数里面的属性名字一致
         proMouseInfoService.removeByIds(Arrays.asList(ids));//asList用于将数组转化为List
         return TableResult.ok("删除该选手鼠标信息成功！");
     }
-    @Auth(roles = {"ADMIN"})
+    @Auth(roles = {"ADMIN","EXECUTIVE"})
     @GetMapping("/getIds")//映射的地址与方法名没有关系
     public TableResult<ProBasicInfo> getIds() {//参数名要和前端的ajax方法中的data参数里面的属性名字一致
         List<ProBasicInfo> proBasicInfoList = proMouseInfoService.getIds();

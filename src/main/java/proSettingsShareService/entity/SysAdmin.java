@@ -35,7 +35,7 @@ public class SysAdmin implements Serializable {
     private String accountPassword;
 
     /**
-     * 账号角色(管理员：ADMIN)
+     * 账号角色(管理员：ADMIN，高管：EXECUTIVE)
      */
     private String accountRole;
 
