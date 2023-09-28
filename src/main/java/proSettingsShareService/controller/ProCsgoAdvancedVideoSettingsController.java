@@ -27,7 +27,6 @@ import java.util.List;
 public class ProCsgoAdvancedVideoSettingsController {
     @Autowired//自动从Spring容器中获取对象给变量赋值
     private IProCsgoAdvancedVideoSettingsService proCsgoAdvancedVideoSettingsService;
-    @Auth(roles = {"ADMIN","EXECUTIVE"})
     @GetMapping("/getProCsgoAdvancedVideoSettingsList")
     public TableResult<ProCsgoAdvancedVideoSettings> getProCsgoAdvancedVideoSettingsList(Integer limit, Integer page, HttpServletRequest request){
         if(limit ==null && page == null){
@@ -40,6 +39,11 @@ public class ProCsgoAdvancedVideoSettingsController {
             // getTotal()方法返回表里的总记录数,getRecords()方法返回当前页的数据列表
             return TableResult.ok("查询成功", page1.getTotal(), page1.getRecords());
         }
+    }
+    @GetMapping("/getProCsgoAdvancedVideoSettingsById")
+    public TableResult<ProCsgoAdvancedVideoSettings> getProCsgoAdvancedVideoSettingsById(Integer proId){
+        ProCsgoAdvancedVideoSettings proCsgoAdvancedVideoSettings = proCsgoAdvancedVideoSettingsService.getById(proId);
+        return TableResult.ok("查询成功",proCsgoAdvancedVideoSettings);
     }
     @Auth(roles = {"ADMIN","EXECUTIVE"})
     @PostMapping("/updateProCsgoAdvancedVideoSettings")

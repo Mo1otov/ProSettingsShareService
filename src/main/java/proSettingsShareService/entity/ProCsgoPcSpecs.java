@@ -45,16 +45,6 @@ public class ProCsgoPcSpecs implements Serializable {
      */
     private String psMotherboard;
 
-    /**
-     * 麦克风型号
-     */
-    private String psMicrophone;
-
-    /**
-     * 摄像头型号
-     */
-    private String psWebcam;
-
     public Integer getProId() {
         return proId;
     }
@@ -94,23 +84,6 @@ public class ProCsgoPcSpecs implements Serializable {
     public void setPsMotherboard(String psMotherboard) {
         this.psMotherboard = psMotherboard;
     }
-
-    public String getPsMicrophone() {
-        return psMicrophone;
-    }
-
-    public void setPsMicrophone(String psMicrophone) {
-        this.psMicrophone = psMicrophone;
-    }
-
-    public String getPsWebcam() {
-        return psWebcam;
-    }
-
-    public void setPsWebcam(String psWebcam) {
-        this.psWebcam = psWebcam;
-    }
-
     @Override
     public String toString() {
         return "ProCsgoPcSpecs{" +
@@ -119,8 +92,6 @@ public class ProCsgoPcSpecs implements Serializable {
         ", psProcessor = " + psProcessor +
         ", psGraphicsCard = " + psGraphicsCard +
         ", psMotherboard = " + psMotherboard +
-        ", psMicrophone = " + psMicrophone +
-        ", psWebcam = " + psWebcam +
         "}";
     }
 }

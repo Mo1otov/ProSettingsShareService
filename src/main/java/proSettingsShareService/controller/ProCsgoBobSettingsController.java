@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import proSettingsShareService.entity.ProBasicInfo;
+import proSettingsShareService.entity.ProCsgoAdvancedVideoSettings;
 import proSettingsShareService.entity.ProCsgoBobSettings;
 import proSettingsShareService.service.IProCsgoBobSettingsService;
 import proSettingsShareService.util.Auth;
@@ -27,7 +28,6 @@ import java.util.List;
 public class ProCsgoBobSettingsController {
     @Autowired//自动从Spring容器中获取对象给变量赋值
     private IProCsgoBobSettingsService proCsgoBobSettingsService;
-    @Auth(roles = {"ADMIN","EXECUTIVE"})
     @GetMapping("/getProCsgoBobSettingsList")
     public TableResult<ProCsgoBobSettings> getProCsgoBobSettingsList(Integer limit, Integer page, HttpServletRequest request){
         if(limit ==null && page == null){
@@ -40,6 +40,11 @@ public class ProCsgoBobSettingsController {
             // getTotal()方法返回表里的总记录数,getRecords()方法返回当前页的数据列表
             return TableResult.ok("查询成功", page1.getTotal(), page1.getRecords());
         }
+    }
+    @GetMapping("/getProCsgoBobSettingsById")
+    public TableResult<ProCsgoBobSettings> getProCsgoBobSettingsById(Integer proId){
+        ProCsgoBobSettings proCsgoBobSettings = proCsgoBobSettingsService.getById(proId);
+        return TableResult.ok("查询成功",proCsgoBobSettings);
     }
     @Auth(roles = {"ADMIN","EXECUTIVE"})
     @PostMapping("/updateProCsgoBobSettings")

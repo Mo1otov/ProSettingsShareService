@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author mxw
@@ -26,35 +26,42 @@ import java.util.List;
 public class ProBasicInfoController {
     @Autowired//自动从Spring容器中获取对象给变量赋值
     private IProBasicInfoService proBasicInfoService;
-    @Auth(roles = {"ADMIN","EXECUTIVE"})
+
     @GetMapping("/getProBasicInfoList")
-    public TableResult<ProBasicInfo> getProBasicInfoList(Integer limit, Integer page, HttpServletRequest request){
-        if(limit ==null && page == null){
+    public TableResult<ProBasicInfo> getProBasicInfoList(Integer limit, Integer page, HttpServletRequest request) {
+        if (limit == null && page == null) {
             List<ProBasicInfo> proBasicInfoList = proBasicInfoService.list();
             // getTotal()方法返回表里的总记录数,getRecords()方法返回当前页的数据列表
-            return TableResult.ok("查询成功",proBasicInfoList.size(),proBasicInfoList);
-        }else {
+            return TableResult.ok("查询成功", proBasicInfoList.size(), proBasicInfoList);
+        } else {
             Page<ProBasicInfo> proBasicInfoPage = new Page<>(page, limit);
             Page<ProBasicInfo> page1 = proBasicInfoService.page(proBasicInfoPage); // 调用service层的page方法,返回分页
             // getTotal()方法返回表里的总记录数,getRecords()方法返回当前页的数据列表
             return TableResult.ok("查询成功", page1.getTotal(), page1.getRecords());
         }
     }
-    @Auth(roles = {"ADMIN","EXECUTIVE"})
+
+    @GetMapping("/getProBasicInfoById")
+    public TableResult<ProBasicInfo> getProBasicInfoById(Integer proId) {
+        ProBasicInfo proBasicInfo = proBasicInfoService.getById(proId);
+        return TableResult.ok("查询成功", proBasicInfo);
+    }
+
+    @Auth(roles = {"ADMIN", "EXECUTIVE"})
     @PostMapping("/updateProBasicInfo")
     public TableResult<ProBasicInfo> updateProBasicInfo(ProBasicInfo proBasicInfo) {
         proBasicInfoService.updateById(proBasicInfo);
         return TableResult.ok("修改该选手基本信息成功！");
     }
 
-    @Auth(roles = {"ADMIN","EXECUTIVE"})
+    @Auth(roles = {"ADMIN", "EXECUTIVE"})
     @PostMapping("/addProBasicInfo")//映射的地址与方法名没有关系
     public TableResult<ProBasicInfo> addProBasicInfo(ProBasicInfo proBasicInfo) {
         proBasicInfoService.save(proBasicInfo);
         return TableResult.ok("新增该选手基本信息成功！");
     }
 
-    @Auth(roles = {"ADMIN","EXECUTIVE"})
+    @Auth(roles = {"ADMIN", "EXECUTIVE"})
     @PostMapping("/deleteProBasicInfo")//映射的地址与方法名没有关系
     public TableResult<ProBasicInfo> deleteProBasicInfo(Integer[] ids) {//参数名要和前端的ajax方法中的data参数里面的属性名字一致
         proBasicInfoService.removeByIds(Arrays.asList(ids));//asList用于将数组转化为List
