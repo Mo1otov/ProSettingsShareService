@@ -55,11 +55,6 @@ public class ProCsgoEquipmentGear implements Serializable {
      */
     private String gearMousepad;
 
-    /**
-     * 入耳式耳机型号
-     */
-    private String gearEarphones;
-
     public Integer getProId() {
         return proId;
     }
@@ -116,14 +111,6 @@ public class ProCsgoEquipmentGear implements Serializable {
         this.gearMousepad = gearMousepad;
     }
 
-    public String getGearEarphones() {
-        return gearEarphones;
-    }
-
-    public void setGearEarphones(String gearEarphones) {
-        this.gearEarphones = gearEarphones;
-    }
-
     @Override
     public String toString() {
         return "ProCsgoEquipmentGear{" +
@@ -134,7 +121,6 @@ public class ProCsgoEquipmentGear implements Serializable {
         ", gearKeyboard = " + gearKeyboard +
         ", gearHeadset = " + gearHeadset +
         ", gearMousepad = " + gearMousepad +
-        ", gearEarphones = " + gearEarphones +
         "}";
     }
 }

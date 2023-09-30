@@ -68,12 +68,12 @@ public class ProCsgoViewmodelSettings implements Serializable {
     /**
      * 选手视图模型是否开启后座力晃动(1表示开启,0表示关闭)
      */
-    private Byte vlRecoil;
+    private String vlRecoil;
 
     /**
      * 选手视图模型持枪是否为右手(1表示开启,0表示关闭)
      */
-    private Byte vlRighthand;
+    private String vlRighthand;
 
     public Integer getProId() {
         return proId;
@@ -147,19 +147,19 @@ public class ProCsgoViewmodelSettings implements Serializable {
         this.vlShiftRightAmt = vlShiftRightAmt;
     }
 
-    public Byte getVlRecoil() {
+    public String getVlRecoil() {
         return vlRecoil;
     }
 
-    public void setVlRecoil(Byte vlRecoil) {
+    public void setVlRecoil(String vlRecoil) {
         this.vlRecoil = vlRecoil;
     }
 
-    public Byte getVlRighthand() {
+    public String getVlRighthand() {
         return vlRighthand;
     }
 
-    public void setVlRighthand(Byte vlRighthand) {
+    public void setVlRighthand(String vlRighthand) {
         this.vlRighthand = vlRighthand;
     }
 

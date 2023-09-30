@@ -68,12 +68,7 @@ public class ProMouseInfo implements Serializable {
     /**
      * 是否开启原始输入(1表示true,0表示false)
      */
-    private Byte msRawInput;
-
-    /**
-     * 是否开启鼠标加速(1表示true,0表示false)
-     */
-    private Byte msMouseAcceleration;
+    private String msRawInput;
 
     public Integer getProId() {
         return proId;
@@ -147,20 +142,12 @@ public class ProMouseInfo implements Serializable {
         this.msWindowsSensitivity = msWindowsSensitivity;
     }
 
-    public Byte getMsRawInput() {
+    public String getMsRawInput() {
         return msRawInput;
     }
 
-    public void setMsRawInput(Byte msRawInput) {
+    public void setMsRawInput(String msRawInput) {
         this.msRawInput = msRawInput;
-    }
-
-    public Byte getMsMouseAcceleration() {
-        return msMouseAcceleration;
-    }
-
-    public void setMsMouseAcceleration(Byte msMouseAcceleration) {
-        this.msMouseAcceleration = msMouseAcceleration;
     }
 
     @Override
@@ -176,7 +163,6 @@ public class ProMouseInfo implements Serializable {
         ", msHz = " + msHz +
         ", msWindowsSensitivity = " + msWindowsSensitivity +
         ", msRawInput = " + msRawInput +
-        ", msMouseAcceleration = " + msMouseAcceleration +
         "}";
     }
 }

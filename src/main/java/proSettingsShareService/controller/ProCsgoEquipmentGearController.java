@@ -1,17 +1,19 @@
 package proSettingsShareService.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import proSettingsShareService.entity.GearMap;
 import proSettingsShareService.entity.ProBasicInfo;
 import proSettingsShareService.entity.ProCsgoEquipmentGear;
+import proSettingsShareService.service.IGearMapService;
 import proSettingsShareService.service.IProCsgoEquipmentGearService;
 import proSettingsShareService.util.Auth;
 import proSettingsShareService.util.TableResult;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * <p>
@@ -27,6 +29,8 @@ import java.util.List;
 public class ProCsgoEquipmentGearController {
     @Autowired//自动从Spring容器中获取对象给变量赋值
     private IProCsgoEquipmentGearService proCsgoEquipmentGearService;
+    @Autowired
+    private IGearMapService iGearMapService;
 
     @GetMapping("/getProCsgoEquipmentGearList")
     public TableResult<ProCsgoEquipmentGear> getProCsgoEquipmentGearList(Integer limit, Integer page, HttpServletRequest request) {
@@ -43,9 +47,46 @@ public class ProCsgoEquipmentGearController {
     }
 
     @GetMapping("/getProCsgoEquipmentGearById")
-    public TableResult<ProCsgoEquipmentGear> getProCsgoEquipmentGearById(Integer proId) {
+    public TableResult<List<GearMap>> getProCsgoEquipmentGearById(Integer proId) {
+
         ProCsgoEquipmentGear proCsgoEquipmentGear = proCsgoEquipmentGearService.getById(proId);
-        return TableResult.ok("查询成功", proCsgoEquipmentGear);
+        QueryWrapper<GearMap> wrapper = new QueryWrapper<>();
+        List<GearMap> gearMapList = new ArrayList<>();
+        Map<String,Object> map = new HashMap();
+        map.put("gear_type", "显示器");
+        map.put("gear_name", proCsgoEquipmentGear.getGearMonitor());
+        wrapper.allEq(map);
+        gearMapList.add(iGearMapService.getOne(wrapper));
+
+        map = new HashMap<>();
+        wrapper = new QueryWrapper<>();
+        map.put("gear_type", "鼠标");
+        map.put("gear_name", proCsgoEquipmentGear.getGearMouse());
+        wrapper.allEq(map);
+        gearMapList.add(iGearMapService.getOne(wrapper));
+
+        map = new HashMap<>();
+        wrapper = new QueryWrapper<>();
+        map.put("gear_type", "键盘");
+        map.put("gear_name", proCsgoEquipmentGear.getGearKeyboard());
+        wrapper.allEq(map);
+        gearMapList.add(iGearMapService.getOne(wrapper));
+
+        map = new HashMap<>();
+        wrapper = new QueryWrapper<>();
+        map.put("gear_type", "头戴式耳机");
+        map.put("gear_name", proCsgoEquipmentGear.getGearHeadset());
+        wrapper.allEq(map);
+        gearMapList.add(iGearMapService.getOne(wrapper));
+
+        map = new HashMap<>();
+        wrapper = new QueryWrapper<>();
+        map.put("gear_type", "鼠标垫");
+        map.put("gear_name", proCsgoEquipmentGear.getGearMousepad());
+        wrapper.allEq(map);
+        gearMapList.add(iGearMapService.getOne(wrapper));
+
+        return TableResult.ok("查询成功", gearMapList);
     }
 
     @Auth(roles = {"ADMIN", "EXECUTIVE"})

@@ -33,7 +33,7 @@ public class ProCsgoCrosshairSettings implements Serializable {
     /**
      * 是否启用准星轮廓(1表示true，0表示false)
      */
-    private Byte crDrawoutline;
+    private String crDrawoutline;
 
     /**
      * 准星前置选择
@@ -63,7 +63,7 @@ public class ProCsgoCrosshairSettings implements Serializable {
     /**
      * 准星是否启用中心点(1表示true，0表示false)
      */
-    private Byte crDot;
+    private String crDot;
 
     /**
      * 准星间隙
@@ -106,11 +106,11 @@ public class ProCsgoCrosshairSettings implements Serializable {
         this.proGameId = proGameId;
     }
 
-    public Byte getCrDrawoutline() {
+    public String getCrDrawoutline() {
         return crDrawoutline;
     }
 
-    public void setCrDrawoutline(Byte crDrawoutline) {
+    public void setCrDrawoutline(String crDrawoutline) {
         this.crDrawoutline = crDrawoutline;
     }
 
@@ -154,11 +154,11 @@ public class ProCsgoCrosshairSettings implements Serializable {
         this.crRed = crRed;
     }
 
-    public Byte getCrDot() {
+    public String getCrDot() {
         return crDot;
     }
 
-    public void setCrDot(Byte crDot) {
+    public void setCrDot(String crDot) {
         this.crDot = crDot;
     }
 

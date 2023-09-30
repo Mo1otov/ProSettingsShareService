@@ -3,11 +3,13 @@ package proSettingsShareService.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+
+import java.io.File;
 import java.io.Serializable;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author mxw
@@ -30,6 +32,11 @@ public class ProBasicInfo implements Serializable {
     private String proGameId;
 
     /**
+     * 选手照片
+     */
+    private byte[] proImg;
+
+    /**
      * 选手所属战队
      */
     private String proClan;
@@ -48,12 +55,6 @@ public class ProBasicInfo implements Serializable {
      * 选手生日
      */
     private String proBirthday;
-
-    /**
-     * 选手玩的游戏
-     */
-    private String proPlayGame;
-
     /**
      * 选手简介
      */
@@ -73,6 +74,14 @@ public class ProBasicInfo implements Serializable {
 
     public void setProGameId(String proGameId) {
         this.proGameId = proGameId;
+    }
+
+    public byte[] getProImg() {
+        return proImg;
+    }
+
+    public void setProImg(byte[] proImg) {
+        this.proImg = proImg;
     }
 
     public String getProClan() {
@@ -107,14 +116,6 @@ public class ProBasicInfo implements Serializable {
         this.proBirthday = proBirthday;
     }
 
-    public String getProPlayGame() {
-        return proPlayGame;
-    }
-
-    public void setProPlayGame(String proPlayGame) {
-        this.proPlayGame = proPlayGame;
-    }
-
     public String getProProfile() {
         return proProfile;
     }
@@ -126,14 +127,13 @@ public class ProBasicInfo implements Serializable {
     @Override
     public String toString() {
         return "ProBasicInfo{" +
-        "proId = " + proId +
-        ", proGameId = " + proGameId +
-        ", proClan = " + proClan +
-        ", proCountry = " + proCountry +
-        ", proName = " + proName +
-        ", proBirthday = " + proBirthday +
-        ", proPlayGame = " + proPlayGame +
-        ", proProfile = " + proProfile +
-        "}";
+                "proId = " + proId +
+                ", proGameId = " + proGameId +
+                ", proClan = " + proClan +
+                ", proCountry = " + proCountry +
+                ", proName = " + proName +
+                ", proBirthday = " + proBirthday +
+                ", proProfile = " + proProfile +
+                "}";
     }
 }

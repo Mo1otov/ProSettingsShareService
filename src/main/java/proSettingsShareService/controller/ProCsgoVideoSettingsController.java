@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import proSettingsShareService.entity.ProBasicInfo;
-import proSettingsShareService.entity.ProCsgoPcSpecs;
 import proSettingsShareService.entity.ProCsgoVideoSettings;
 import proSettingsShareService.service.IProCsgoVideoSettingsService;
 import proSettingsShareService.util.Auth;

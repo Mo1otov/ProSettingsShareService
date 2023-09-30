@@ -14,7 +14,7 @@ public class MybatisGenerator {
         }).packageConfig(builder -> {
             builder.parent("proSettingsShareService"); // 设置父包名
         }).strategyConfig(builder -> {
-            builder.addInclude("pro_mouse_info"); // 设置需要生成的表名
+            builder.addInclude("gear_map"); // 设置需要生成的表名
         }).execute();
     }
 }
