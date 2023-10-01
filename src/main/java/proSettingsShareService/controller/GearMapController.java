@@ -4,11 +4,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.stereotype.Controller;
 import proSettingsShareService.entity.GearMap;
-import proSettingsShareService.entity.ProBasicInfo;
 import proSettingsShareService.service.IGearMapService;
-import proSettingsShareService.service.IProBasicInfoService;
 import proSettingsShareService.util.Auth;
 import proSettingsShareService.util.TableResult;
 
