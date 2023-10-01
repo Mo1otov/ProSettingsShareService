@@ -52,38 +52,29 @@ public class ProCsgoEquipmentGearController {
         ProCsgoEquipmentGear proCsgoEquipmentGear = proCsgoEquipmentGearService.getById(proId);
         QueryWrapper<GearMap> wrapper = new QueryWrapper<>();
         List<GearMap> gearMapList = new ArrayList<>();
-        Map<String,Object> map = new HashMap();
-        map.put("gear_type", "显示器");
-        map.put("gear_name", proCsgoEquipmentGear.getGearMonitor());
-        wrapper.allEq(map);
+
+        wrapper.eq("gear_type", "显示器");
+        wrapper.eq("gear_name", proCsgoEquipmentGear.getGearMonitor());
         gearMapList.add(iGearMapService.getOne(wrapper));
 
-        map = new HashMap<>();
         wrapper = new QueryWrapper<>();
-        map.put("gear_type", "鼠标");
-        map.put("gear_name", proCsgoEquipmentGear.getGearMouse());
-        wrapper.allEq(map);
+        wrapper.eq("gear_type", "鼠标");
+        wrapper.eq("gear_name", proCsgoEquipmentGear.getGearMouse());
         gearMapList.add(iGearMapService.getOne(wrapper));
 
-        map = new HashMap<>();
         wrapper = new QueryWrapper<>();
-        map.put("gear_type", "键盘");
-        map.put("gear_name", proCsgoEquipmentGear.getGearKeyboard());
-        wrapper.allEq(map);
+        wrapper.eq("gear_type", "键盘");
+        wrapper.eq("gear_name", proCsgoEquipmentGear.getGearKeyboard());
         gearMapList.add(iGearMapService.getOne(wrapper));
 
-        map = new HashMap<>();
         wrapper = new QueryWrapper<>();
-        map.put("gear_type", "头戴式耳机");
-        map.put("gear_name", proCsgoEquipmentGear.getGearHeadset());
-        wrapper.allEq(map);
+        wrapper.eq("gear_type", "头戴式耳机");
+        wrapper.eq("gear_name", proCsgoEquipmentGear.getGearHeadset());
         gearMapList.add(iGearMapService.getOne(wrapper));
 
-        map = new HashMap<>();
         wrapper = new QueryWrapper<>();
-        map.put("gear_type", "鼠标垫");
-        map.put("gear_name", proCsgoEquipmentGear.getGearMousepad());
-        wrapper.allEq(map);
+        wrapper.eq("gear_type", "鼠标垫");
+        wrapper.eq("gear_name", proCsgoEquipmentGear.getGearMousepad());
         gearMapList.add(iGearMapService.getOne(wrapper));
 
         return TableResult.ok("查询成功", gearMapList);

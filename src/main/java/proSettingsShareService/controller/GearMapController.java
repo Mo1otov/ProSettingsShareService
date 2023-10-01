@@ -1,6 +1,7 @@
 package proSettingsShareService.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
@@ -47,17 +48,40 @@ public class GearMapController {
     @Auth(roles = {"ADMIN", "EXECUTIVE"})
     @PostMapping("/updateGearMapInfo")
     public TableResult<GearMap> updateGearMapInfo(GearMap gearMap) {
-        iGearMapService.updateById(gearMap);
-        return TableResult.ok("修改该选手基本信息成功！");
+        String base64 = new String(gearMap.getGearImg());
+        try {
+            base64 = base64.split(",")[1];//通过base64来转化图片,去掉图片头(data:image/jpg;base64,)
+            //2,解码成字节数组
+            byte[] result = Base64.decodeBase64(base64);
+            gearMap.setGearImg(result);
+            iGearMapService.updateById(gearMap);
+            return TableResult.ok("修改该外设映射信息成功！");
+        } catch (Exception e) {
+            byte[] result = Base64.decodeBase64(base64);
+            gearMap.setGearImg(result);
+            iGearMapService.updateById(gearMap);
+            return TableResult.ok("修改该外设映射信息成功！");
+        }
     }
 
     @Auth(roles = {"ADMIN", "EXECUTIVE"})
     @PostMapping("/addGearMapInfo")//映射的地址与方法名没有关系
     public TableResult<GearMap> addGearMapInfo(GearMap gearMap) {
-        iGearMapService.save(gearMap);
-        return TableResult.ok("新增该选手基本信息成功！");
-    }
-
+        String base64 = new String(gearMap.getGearImg());
+            try {
+                base64 = base64.split(",")[1];//通过base64来转化图片,去掉图片头(data:image/jpg;base64,)
+                //2,解码成字节数组
+                byte[] result = Base64.decodeBase64(base64);
+                gearMap.setGearImg(result);
+                iGearMapService.save(gearMap);
+                return TableResult.ok("新增该外设映射信息成功！");
+            } catch (Exception e) {
+                byte[] result = Base64.decodeBase64(base64);
+                gearMap.setGearImg(result);
+                iGearMapService.save(gearMap);
+                return TableResult.ok("新增该外设映射信息成功！");
+            }
+        }
     @Auth(roles = {"ADMIN", "EXECUTIVE"})
     @PostMapping("/deleteGearMapInfo")//映射的地址与方法名没有关系
     public TableResult<GearMap> deleteGearMapInfo(Integer[] ids) {//参数名要和前端的ajax方法中的data参数里面的属性名字一致

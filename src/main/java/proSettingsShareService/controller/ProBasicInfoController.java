@@ -1,6 +1,7 @@
 package proSettingsShareService.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import proSettingsShareService.entity.ProBasicInfo;
@@ -50,15 +51,39 @@ public class ProBasicInfoController {
     @Auth(roles = {"ADMIN", "EXECUTIVE"})
     @PostMapping("/updateProBasicInfo")
     public TableResult<ProBasicInfo> updateProBasicInfo(ProBasicInfo proBasicInfo) {
-        proBasicInfoService.updateById(proBasicInfo);
-        return TableResult.ok("修改该选手基本信息成功！");
+        String base64 = new String(proBasicInfo.getProImg());
+        try {
+            base64 = base64.split(",")[1];//通过base64来转化图片,去掉图片头(data:image/jpg;base64,)
+            //2,解码成字节数组
+            byte[] result = Base64.decodeBase64(base64);
+            proBasicInfo.setProImg(result);
+            proBasicInfoService.updateById(proBasicInfo);
+            return TableResult.ok("修改该选手基本信息成功！");
+        } catch (Exception e) {
+            byte[] result = Base64.decodeBase64(base64);
+            proBasicInfo.setProImg(result);
+            proBasicInfoService.updateById(proBasicInfo);
+            return TableResult.ok("修改该选手基本信息成功！");
+        }
     }
 
     @Auth(roles = {"ADMIN", "EXECUTIVE"})
     @PostMapping("/addProBasicInfo")//映射的地址与方法名没有关系
     public TableResult<ProBasicInfo> addProBasicInfo(ProBasicInfo proBasicInfo) {
-        proBasicInfoService.save(proBasicInfo);
-        return TableResult.ok("新增该选手基本信息成功！");
+        String base64 = new String(proBasicInfo.getProImg());
+        try {
+            base64 = base64.split(",")[1];//通过base64来转化图片,去掉图片头(data:image/jpg;base64,)
+            //2,解码成字节数组
+            byte[] result = Base64.decodeBase64(base64);
+            proBasicInfo.setProImg(result);
+            proBasicInfoService.save(proBasicInfo);
+            return TableResult.ok("新增该选手基本信息成功！");
+        } catch (Exception e) {
+            byte[] result = Base64.decodeBase64(base64);
+            proBasicInfo.setProImg(result);
+            proBasicInfoService.save(proBasicInfo);
+            return TableResult.ok("新增该选手基本信息成功！");
+        }
     }
 
     @Auth(roles = {"ADMIN", "EXECUTIVE"})
