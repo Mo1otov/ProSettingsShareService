@@ -8,7 +8,6 @@ import proSettingsShareService.entity.GearMap;
 import proSettingsShareService.service.IGearMapService;
 import proSettingsShareService.util.Auth;
 import proSettingsShareService.util.TableResult;
-
 import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 import java.util.List;
